@@ -1,4 +1,4 @@
-代码基本为原作者 [tomxin7](https://github.com/tomxin7) 所写，我改了一些逻辑处理和更新API。  
+### 代码基本为原作者 [tomxin7](https://github.com/tomxin7) 所写，我改了一些逻辑处理和更新API。  
 
 ## 什么是抖音
 
@@ -44,7 +44,7 @@ adb pull /sdcard/autojump.png .
 git命令
 ```
 git clone https://github.com/zhanglihow/DouYinFaceTech.git
-```
+``` 
 #### 2、依赖
 ```
 Python：3.6.3
