@@ -75,7 +75,7 @@ python FaceMain.py
 ```
 
   
-  2，代码执行 GetDouYinImg.py 的 click_like() 方法时，手机未能点击成功
+  2，检测到中意的人脸后代码执行 GetDouYinImg.py 的 click_like() 方法时，手机未能点击成功
   
 
 ```
