@@ -91,6 +91,8 @@ def click_like():
 
 这样就拿到这个‘喜欢’按钮的像素位置，取个中心值就可以了。
 
+### 有遇到问题欢迎提issues,我尽量帮忙
+
 参考：  
 [https://github.com/tomxin7/DouYinFaceTech](https://github.com/tomxin7/DouYinFaceTech)  
 [https://github.com/wangshub/Douyin-Bot](https://github.com/wangshub/Douyin-Bot)
