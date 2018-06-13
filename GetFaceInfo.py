@@ -37,25 +37,29 @@ imgPath：图片的地址
 access_token：开发者token
 '''
 def getBaiDuFaceTech(imgPath,access_token):
-    request_url = "https://aip.baidubce.com/rest/2.0/face/v1/detect"
+    request_url = "https://aip.baidubce.com/rest/2.0/face/v3/detect"
     # 二进制方式打开图片文件
     f = open(imgPath, 'rb')
     # 图片转换为base64
     img = base64.b64encode(f.read())
-    params = {"face_fields":"age,beauty,expression,faceshape,gender,glasses,landmark,race,qualities","image":img,"max_face_num":5}
+    params = {"face_field":"age,beauty,expression,faceshape,gender,glasses,landmark,race,qualities","image":img,"image_type":"BASE64","max_face_num":5}
     params=urllib.parse.urlencode(params).encode(encoding='utf-8')
     request_url = request_url + "?access_token=" + access_token
     #调用post请求方法
     face_info = get_info_post_json_data(request_url,params)
     #json字符串转对象
     face_json = json.loads(face_info)
+    print("face_json:"+ json.dumps(face_json))
     #如果没有发现人像，会返回空
-    if face_json["result_num"]==0:
+    if face_json["error_code"]!=0:
+        face_dict={}
+    elif(face_json['result']==None):
         face_dict={}
     else:
         #把想要的部分提取存入字典中
-        result = face_json['result'][0]
-        gender = result['gender']
+        result = face_json['result']
+        result=result['face_list'][0]
+        gender = result['gender']['type']
         age = str(result['age'])
         race = str(result['race'])
         beauty = str(result['beauty'])

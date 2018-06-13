@@ -21,7 +21,7 @@ def getDouYinImg():
 
 #点小爱心
 def click_like():
-    os.system("adb shell input tap 1076 1078")#点击事件，一加3
+    os.system("adb shell input tap 950 850")#点击事件，一加3
     # os.system("adb shell input tap 1476 1394")  # 点击事件，小米平板2
 
 
