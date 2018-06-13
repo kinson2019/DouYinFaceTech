@@ -1,10 +1,4 @@
-<p align="center">
-<img src="https://github.com/tomxin7/DouYinFaceTech/blob/master/banner1.png?raw=true" alt="Material Render Phone">
-</p>
-
-<h1 align="center"><a href="http://blog.tomxin.cn" target="_blank">Tomxin7 </a></h1>
-
-> Simple, Interesting | 简单，有趣
+代码基本为原作者 [tomxin7](https://github.com/tomxin7) 所写，我改了一些逻辑处理和更新API。  
 
 ## 什么是抖音
 
@@ -21,22 +15,22 @@
 
 ##### 本程序与抖音无关，主要供学习用途
 
-1. 将手机打开抖音的推荐视频界面
+1，将手机打开抖音的推荐视频界面
 
-2. 用 ADB 工具获取当前手机截图，并用 ADB 将截图 pull 上来
-```shell
+2，用 ADB 工具获取当前手机截图，并用 ADB 将截图 pull 上来
+
+```
 adb shell screencap -p /sdcard/autojump.png
 adb pull /sdcard/autojump.png .
 ```
 
-3. 将图片进行压缩,并调用[百度人脸识别API](http://ai.baidu.com/tech/face)
+3，将图片进行压缩,并调用[百度人脸识别API](http://ai.baidu.com/tech/face)（目前使用的是v3的API）
 
+4，获得百度返回的数据进行判断分析
 
-4. 获得百度返回的数据进行判断分析
+5，如果满足要求，使用ADB点赞
 
-5. 如果满足要求，使用ADB点赞
-
-6. 上滑切换新视频 
+6，上滑切换新视频 
 
 
 
@@ -46,27 +40,57 @@ adb pull /sdcard/autojump.png .
 
 
 #### 1、获取源码
-github地址
-```
-https://github.com/tomxin7/DouYinFaceTech
-```
+
 git命令
 ```
-git clone https://github.com/tomxin7/DouYinFaceTech.git
+git clone https://github.com/zhanglihow/DouYinFaceTech.git
 ```
 #### 2、依赖
 ```
-Python：3.6.1 
+Python：3.6.3
 ADB下载：http://adbshell.com/downloads
+依赖：pip install pillow 
 ```
 #### 3、准备
 ```
 使用数据线连接手机与电脑，并开启调试模式
-启动ADB，保证驱动安装（保证可以连接360手机助手等软件）
-FaceMain.py中替换token的host链接
+申请百度人脸检测申请Key FaceMain.py中替换token的host链接
+
 ```
 #### 4、运行
+
 ```
-手机打开抖音，PC退出手机助手等软件
+手机打开抖音首页
 DouYinFaceTech目录下直接运行FaceMain.py
+
 ```
+#### 5、可能遇到的问题
+
+
+1，运行py文件不成功，出现cmd后闪退，建议这样运行有错误提示
+
+```
+cd 项目目录
+python FaceMain.py
+```
+
+  
+  2，代码执行 GetDouYinImg.py 的 click_like() 方法时，手机未能点击成功
+  
+
+```
+def click_like():
+    os.system("adb shell input tap 950 850")#点击事件
+```
+需要对应你的手机来更改位置
+可以用AndroidStudio  
+
+<img src="https://github.com/zhanglihow/DouYinFaceTech/blob/master/pic/as1.jpg" width="500" hegiht="500" align=center />
+<img src="https://github.com/zhanglihow/DouYinFaceTech/blob/master/pic/as2.png" width="500" hegiht="500" align=center />
+<img src="https://github.com/zhanglihow/DouYinFaceTech/blob/master/pic/as3.png" width="500" hegiht="500" align=center />
+
+这样就拿到这个‘喜欢’按钮的像素位置，取个中心值就可以了。
+
+参考：  
+[https://github.com/tomxin7/DouYinFaceTech](https://github.com/tomxin7/DouYinFaceTech)  
+[https://github.com/wangshub/Douyin-Bot](https://github.com/wangshub/Douyin-Bot)
