@@ -49,7 +49,7 @@ def getBaiDuFaceTech(imgPath,access_token):
     face_info = get_info_post_json_data(request_url,params)
     #json字符串转对象
     face_json = json.loads(face_info)
-    print("face_json:"+ json.dumps(face_json))
+ #   print("face_json:"+ json.dumps(face_json))
     #如果没有发现人像，会返回空
     if face_json["error_code"]!=0:
         face_dict={}
