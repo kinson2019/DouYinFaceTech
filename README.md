@@ -10,7 +10,7 @@
 <!--more-->
 
 
-![](https://github.com/tomxin7/DouYinFaceTech/raw/master/20180418_000727.gif)
+![](https://github.com/zhanglihow/DouYinFaceTech/blob/master/20180418_000727.gif)
 ## 原理说明
 
 ##### 本程序与抖音无关，主要供学习用途
